@@ -170,10 +170,21 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PromoesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703060919385_InitialCreate.cs" />
+    <Compile Include="Migrations\201703060919385_InitialCreate.Designer.cs">
+      <DependentUpon>201703060919385_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703211003193_promo.cs" />
+    <Compile Include="Migrations\201703211003193_promo.Designer.cs">
+      <DependentUpon>201703211003193_promo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\FormInfoViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -182,20 +193,71 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Immagini\close.png" />
+    <Content Include="Content\Immagini\1.jpg" />
+    <Content Include="Content\Immagini\facebook.png" />
+    <Content Include="Content\Immagini\Galleria\02.JPG" />
+    <Content Include="Content\Immagini\Galleria\03.JPG" />
+    <Content Include="Content\Immagini\Galleria\08.jpg" />
+    <Content Include="Content\Immagini\Galleria\13.jpg" />
+    <Content Include="Content\Immagini\Galleria\14.jpg" />
+    <Content Include="Content\Immagini\Galleria\15.jpg" />
+    <Content Include="Content\Immagini\Galleria\16.jpg" />
+    <Content Include="Content\Immagini\Galleria\17.jpg" />
+    <Content Include="Content\Immagini\Galleria\18.jpg" />
+    <Content Include="Content\Immagini\Galleria\19.jpg" />
+    <Content Include="Content\Immagini\Galleria\20.jpg" />
+    <Content Include="Content\Immagini\Galleria\21.jpg" />
+    <Content Include="Content\Immagini\Galleria\22.jpg" />
+    <Content Include="Content\Immagini\Galleria\23.jpg" />
+    <Content Include="Content\Immagini\Galleria\24.jpg" />
+    <Content Include="Content\Immagini\Galleria\25.jpg" />
+    <Content Include="Content\Immagini\Galleria\26.jpg" />
+    <Content Include="Content\Immagini\Galleria\27.jpg" />
+    <Content Include="Content\Immagini\Galleria\28.jpg" />
+    <Content Include="Content\Immagini\Galleria\29.jpg" />
+    <Content Include="Content\Immagini\Galleria\30.jpg" />
+    <Content Include="Content\Immagini\Galleria\31.jpg" />
+    <Content Include="Content\Immagini\Galleria\32.jpg" />
+    <Content Include="Content\Immagini\Galleria\6.jpg" />
+    <Content Include="Content\Immagini\login.png" />
+    <Content Include="Content\Immagini\Logo.jpg" />
+    <Content Include="Content\Immagini\Logo.png" />
+    <Content Include="Content\Immagini\next.png" />
+    <Content Include="Content\Immagini\2.jpg" />
+    <Content Include="Content\Immagini\prev.png" />
+    <Content Include="Content\Immagini\Slide\5.JPG" />
+    <Content Include="Content\Immagini\Slide\4.JPG" />
+    <Content Include="Content\Immagini\Galleria\05.jpg" />
+    <Content Include="Content\Immagini\Slide\3.jpg" />
+    <Content Include="Content\Immagini\Galleria\09.jpg" />
+    <Content Include="Content\Immagini\Slide\1.jpg" />
+    <Content Include="Content\Immagini\Galleria\10.jpg" />
+    <Content Include="Content\Immagini\Galleria\11.jpg" />
+    <Content Include="Content\Immagini\Galleria\12.jpg" />
+    <Content Include="Content\Immagini\Slide\2.jpg" />
+    <Content Include="Content\Immagini\trasp.png" />
+    <Content Include="Content\lightbox.css" />
+    <Content Include="Content\slide.css" />
+    <Content Include="Content\style3.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\DocumentoPrivacy.pdf" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.1.0.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\lightbox-plus-jquery.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -234,6 +296,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\Dove.cshtml" />
+    <Content Include="Views\Home\Galleria.cshtml" />
+    <Content Include="Views\Home\FormOk.cshtml" />
+    <Content Include="Views\Promoes\Create.cshtml" />
+    <Content Include="Views\Promoes\Delete.cshtml" />
+    <Content Include="Views\Promoes\Details.cshtml" />
+    <Content Include="Views\Promoes\Edit.cshtml" />
+    <Content Include="Views\Promoes\Index.cshtml" />
+    <Content Include="Views\Promoes\EditImgP.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -245,6 +316,14 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201703060919385_InitialCreate.resx">
+      <DependentUpon>201703060919385_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703211003193_promo.resx">
+      <DependentUpon>201703211003193_promo.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

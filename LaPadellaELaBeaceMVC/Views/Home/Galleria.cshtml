@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Galleria";
+}
+<div class="galla">
+    <h2 class="text-center">Galleria</h2><hr/>
+    @foreach (var item in ViewBag.Immagini)
+    {
+        var filename = Path.GetFileName(item);
+        <div>
+            <span><a href="@Url.Content("~/Content/Immagini/Galleria/" + @filename)" data-lightbox="example-set"><img class="example-image" src="@Url.Content("~/Content/Immagini/Galleria/" + @filename)" alt="" /></a></span>
+
+        </div>
+    }
+
+</div>
+@section Scripts{
+<script src="~/Scripts/lightbox-plus-jquery.min.js"></script>
+    }

@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
+        @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-default ">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,24 +16,53 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a class="navbar-brand" href="~/"><img class="img-logo" src="/Content/Immagini/Logo.png" /></a>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="a-nav" href="@Url.Action("Index", "Home")"><span class="glyphicon glyphicon-home"></span></a></li>
+                    <li>@Html.ActionLink("Dove", "Dove", "Home")</li>
+                    <li>@Html.ActionLink("Galleria", "Galleria", "Home")</li>
+                    <li>@Html.ActionLink("Contattaci", "Contact", "Home")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
             </div>
         </div>
-    </div>
-    <div class="container body-content">
+   </div>
+    <div class="body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <footer class="navbar-fixed-bottom">
+            <p>
+                @*@Html.Partial("_LoginPartial")*@  
+                <a href="@Url.Action("Login", "Account")">&copy; @DateTime.Now.Year</a> - La padella e la Brace
+                <span>
+                    Via Roma, 24 - Castel Gabbiano (CR) - Tel. +39 0373 419535 - 335 6943774/772
+                    E-mail: <a href="mailto:lapadellaelabrace@gmail.com "> lapadellaelabrace@gmail.com </a>
+                </span>
+                <span> - Powered by <a target="_blank" href="http://www.cr-consult.eu/zona-web">Almish&CesàreWeb</a></span>
+            </p>
         </footer>
+    </div>
+
+    @*Menu destra fisso*@
+    <div class="docu">
+        <ul>
+            <li>
+                <a href="https://www.facebook.com/LaPadellaeLaBrace/" target="_blank" title="Facebook">
+                    <img src="~/Content/Immagini/Facebook.png" />
+                </a>
+
+            </li>
+            @if (User.Identity.IsAuthenticated)
+            {
+            <li>
+                <a href="@Url.Action("Index", "Promoes")">
+                    <img src="~/Content/Immagini/Login.png" />
+                </a>
+
+            </li>
+
+            }
+       </ul>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

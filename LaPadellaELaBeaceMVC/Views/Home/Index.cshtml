@@ -1,31 +1,121 @@
-﻿@{
+﻿@model LaPadellaELaBeaceMVC.Models.FormInfoViewModel
+
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+@*Inizio slideshow*@
+<div class="row">
+
+    <ul class="cb-slideshow">
+        <li><span>Image 01</span><div><h3></h3></div></li>
+        <li><span>Image 02</span><div><h3></h3></div></li>
+        <li><span>Image 03</span><div><h3></h3></div></li>
+        <li><span>Image 04</span><div><h3></h3></div></li>
+        <li><span>Image 05</span><div><h3></h3></div></li>
+        <li><span>Image 06</span><div><h3></h3></div></li>
+    </ul>
+</div>
+@*Fine slideshow*@
+
+
+
+
+@*Inizio promo*@
+
+    <div class="row content-offerta">
+        @foreach (var item in ViewBag.Promo)
+        {
+            <div class="col col-md-5 box-offerta">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a href="@Url.Action("Edit", "Promoes", new {id = item.Promo_Id })">Modifica</a>
+                }
+                <a role="button" data-toggle="collapse" href="#@item.Promo_Id">
+                    <h1>@item.Nome</h1>
+
+                </a>
+                <div class="collapse" id="@item.Promo_Id">
+                    <hr />
+                    <img class="img-circle-pad" src="@Url.Content("~/Content/Immagini/" + item.Promo_Id + ".jpg")" />
+                    <p>@Html.Raw(item.Descrizione)</p><br/>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ModalPromo">
+                        Info
+                    </button>
+                </div>
+            </div>
+            <div class="col col-md-2"></div>
+
+        }
+
+    </div>
+            <!-- Modal -->
+<div class="modal fade" id="ModalPromo" tabindex="-1" role="dialog" aria-labelledby="ModalPromo">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel1">Info</h4>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <span class="col-md-3 control-label">@Html.LabelFor(m => m.Nome)</span>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @placeholder = "Il tuo nome" })
+                        </div>
+                    </div>
+                                <div class="form-group">
+                                    <span class="col-md-3 control-label">@Html.LabelFor(m => m.Cognome)</span>
+                                    <div class="col-md-9">
+                                        @Html.TextBoxFor(m => m.Cognome, new { @class = "form-control", @placeholder = "Il tuo cognome" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <span class="col-md-3 control-label">@Html.LabelFor(m => m.Email)</span>
+                                    <div class="col-md-9">
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Mail di riferimento" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <span class="col-md-3 control-label">@Html.LabelFor(m => m.Telefono)</span>
+                                    <div class="col-md-9">
+                                        @Html.TextBoxFor(m => m.Telefono, new { @class = "form-control", @placeholder = "Telefono o cellulare" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <span class="col-md-3 control-label">@Html.LabelFor(m => m.Messaggio)</span>
+                                    <div class="col-md-9">
+                                        @Html.TextAreaFor(m => m.Messaggio, new { @class = "form-control", @placeholder = "Scrivi qui il tuo messaggio" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Privacy, new { @class = "col-md-3 control-label" })
+                                    <div class="col-md-9">
+                                        <h4>
+                                            @Html.CheckBoxFor(m => m.Privacy)
+                                            <br />Dichiaro di aver preso visione del <br /> <a href="http://www.crctest.cloud/Content/Documenti/Privacy-V1.pdf?id=21" target="_blank"> documento della privacy</a>
+                                        </h4>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" class="btn btn-success" value="Invia" />
+                                    </div>
+                                </div>
+                }
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+
+
+@section Scripts{
+
+    }

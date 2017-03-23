@@ -1,0 +1,64 @@
+﻿@model IEnumerable<LaPadellaELaBeaceMVC.Models.Promo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div class="content-offerta">
+
+    <p>
+        @Html.ActionLink("Nuovo", "Create", null, new { @class = "btn btn-success" })
+    </p>
+    <table class="table table-hover">
+        <thead class="text-primary">
+            <tr>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataI)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataF)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Attiva)
+                </th>
+                <th></th>
+            </tr>
+
+        </thead>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    <img class="img-promo-circle" src="@Url.Content("~/Content/Immagini/" + item.Promo_Id + ".jpg")" />
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataI)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataF)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td class="text-left">
+                    @Html.DisplayFor(modelItem => item.Attiva)
+                </td>
+                <td>
+                    <span>
+                        @Html.ActionLink(" ", "Edit", new { id = item.Promo_Id }, new { @class = "glyphicon glyphicon-pencil text-primary", @title="Modifica" }) 
+                        @Html.ActionLink(" ", "Details", new { id = item.Promo_Id }, new { @class = "glyphicon glyphicon-th-list text-success", @title="Dettagli" })  
+                        @Html.ActionLink(" ", "Delete", new { id = item.Promo_Id }, new { @class = "glyphicon glyphicon-remove text-danger", @title = "Cancella" })
+                        @Html.ActionLink(" ", "EditImgP", new { id = item.Promo_Id }, new { @class = "glyphicon glyphicon-picture text-primary", @title = "Modifica immagine" })
+                    </span>
+                </td>
+            </tr>
+}
+
+    </table>
+</div>

@@ -25,6 +25,9 @@ namespace LaPadellaELaBeaceMVC
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/slide.css",
+                      "~/Content/style3.css",
+                      "~/Content/lightbox.css",
                       "~/Content/site.css"));
         }
     }
